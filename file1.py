@@ -69,7 +69,9 @@ df3 = df2
 #Water Temperature, Turbidity, Wave Height, Wave Period, Battery Life, Measurement Timestamp, Measurement ID
 scaler = StandardScaler()
 df3[['Water Temperature', 'Turbidity', 'Wave Height', 'Wave Period', 'Battery Life']] = scaler.fit_transform(df3[['Water Temperature', 'Turbidity', 'Wave Height', 'Wave Period', 'Battery Life']])
-df3 = df3.reset_index('Beach Name', drop = True)
+
+#df3 = df3.reset_index('Beach Name', drop = True)
+df3 = df3.rename(columns={'Beach Name': 'BeachName'})
 
 #write to csv
 df3.to_csv("preprocessed.csv", encoding = 'utf-8', index = False, mode = 'w')
